@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from "react";
 
+const url = "http://localhost:8080";
+
 function App() {
     const [products, setProducts] = useState([]);
     const [loadingStatus, setLoadingStatus] = useState();
@@ -16,13 +18,13 @@ function App() {
             alert("No elements selected");
             return;
         }
-        const response = await fetch('http://localhost:8080/api/invoice/pdf?id=' + selectedIds.toString()).then((data) => data.json()).then((data) => {
+        const response = await fetch(url + '/api/invoice/pdf?id=' + selectedIds.toString()).then((data) => data.json()).then((data) => {
             window.open(data.redirectUrl)
         })
     };
 
     const getProducts = async () => {
-        const response = await fetch("http://localhost:8080/api/products")
+        const response = await fetch(url + "/api/products")
             .then((data) => data.json())
             .then((data) => {
                 setProducts(data);
