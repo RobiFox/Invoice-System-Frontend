@@ -22,6 +22,9 @@ function App() {
             .then((data) => data.json())
             .then((data) => {
                 window.open(data.redirectUrl)
+            })
+            .catch(reason => {
+                alert("Failed to open PDF file of Invoice: \n" + reason);
             });
     };
 
