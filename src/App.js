@@ -14,13 +14,15 @@ function App() {
                 return value.id;
             });
         console.log(selectedIds.toString());
-        if(selectedIds.length == 0) {
+        if (selectedIds.length == 0) {
             alert("No elements selected");
             return;
         }
-        const response = await fetch(url + '/api/invoice/pdf?id=' + selectedIds.toString()).then((data) => data.json()).then((data) => {
-            window.open(data.redirectUrl)
-        })
+        const response = await fetch(url + '/api/invoice/pdf?id=' + selectedIds.toString())
+            .then((data) => data.json())
+            .then((data) => {
+                window.open(data.redirectUrl)
+            });
     };
 
     const getProducts = async () => {
