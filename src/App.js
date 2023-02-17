@@ -22,22 +22,26 @@ function App() {
     return (
         <div className="App">
             <table>
-                <tr>
-                    <td>Name</td>
-                    <td>Amount</td>
-                    <td>Include in Invoice</td>
-                </tr>
+                {products ? (
+                    <tr>
+                        <td>Name</td>
+                        <td>Amount</td>
+                        <td>Include in Invoice</td>
+                    </tr>
+                ) : (
+                    <p>Loading...</p>
+                )}
                 {products && products.map((product) => (
-                        <tr key={product.id}>
-                            <td style={{border: '1px solid black'}}>{product.name}</td>
-                            <td style={{border: '1px solid black'}}>{product.amount}</td>
-                            <td style={{border: '1px solid black'}}><input type="checkbox"/></td>
-                        </tr>
-                        ))}
+                    <tr key={product.id}>
+                        <td style={{border: '1px solid black'}}>{product.name}</td>
+                        <td style={{border: '1px solid black'}}>{product.amount}</td>
+                        <td style={{border: '1px solid black'}}><input type="checkbox"/></td>
+                    </tr>
+                ))}
             </table>
             {products ? (
-                    <button>Generate Invoice from Selected</button>
-            ) : ( <div/>)}
+                <button>Generate Invoice from Selected</button>
+            ) : (<div/>)}
         </div>
     );
 }
