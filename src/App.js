@@ -6,14 +6,17 @@ function App() {
     const [products, setProducts] = useState([]);
     const [loadingStatus, setLoadingStatus] = useState();
 
-    function onInvoiceGenerateClick() {
+    const onInvoiceGenerateClick = async () => {
         console.log("Hi");
         const selectedIds = products.filter(value => document.getElementById("checkbox-" + value.id).checked)
             .map(value => {
                 return value.id;
             });
-        console.log(selectedIds);
-    }
+        console.log(selectedIds.toString());
+        const response = await fetch('http://localhost:8080/api/invoice/pdf?id=' + selectedIds.toString()).then((data) => {
+            console.log(data);
+        })
+    };
 
     const getProducts = async () => {
         const response = await fetch("http://localhost:8080/api/products")
