@@ -7,7 +7,6 @@ function App() {
     const [loadingStatus, setLoadingStatus] = useState();
 
     const onInvoiceGenerateClick = async () => {
-        console.log("Hi");
         const selectedIds = products.filter(value => document.getElementById("checkbox-" + value.id).checked)
             .map(value => {
                 return value.id;
