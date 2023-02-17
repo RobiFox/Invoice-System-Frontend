@@ -15,7 +15,7 @@ function App() {
         console.log(selectedIds);
     }
 
-    const getElements = async () => {
+    const getProducts = async () => {
         const response = await fetch("http://localhost:8080/api/products")
             .then((data) => data.json())
             .then((data) => {
@@ -31,7 +31,7 @@ function App() {
     console.log(products);
 
     useEffect(() => {
-        getElements();
+        getProducts();
         setLoadingStatus("Loading...");
     }, []);
     return (
