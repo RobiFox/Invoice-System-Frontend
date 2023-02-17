@@ -13,7 +13,6 @@ function App() {
             .map(value => {
                 return value.id;
             });
-        console.log(selectedIds.toString());
         if (selectedIds.length == 0) {
             alert("No elements selected");
             return;
@@ -41,12 +40,11 @@ function App() {
             });
     };
 
-    console.log(products);
-
     useEffect(() => {
         getProducts();
         setLoadingStatus("Loading...");
     }, []);
+    
     return (
         <div className="App">
             <table>
