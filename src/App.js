@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 
 function App() {
     const [products, setProducts] = useState();
+    const [loadingStatus, setLoadingStatus] = useState();
 
     const getElements = async () => {
         const response = await fetch("http://localhost:8080/api/products")
@@ -11,13 +12,18 @@ function App() {
             .then((data) => {
                 setProducts(data);
                 console.log("Successful GET");
-            });
+            })
+        .catch(reason => {
+            setLoadingStatus(reason.toString());
+            console.log("Fetch error: " + reason);
+        });
     };
 
     console.log(products);
 
     useEffect(() => {
         getElements();
+        setLoadingStatus("Loading...");
     }, []);
     return (
         <div className="App">
@@ -29,7 +35,7 @@ function App() {
                         <td>Include in Invoice</td>
                     </tr>
                 ) : (
-                    <p>Loading...</p>
+                    <p>{loadingStatus}</p>
                 )}
                 {products && products.map((product) => (
                     <tr key={product.id}>
