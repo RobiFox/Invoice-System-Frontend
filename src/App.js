@@ -16,8 +16,8 @@ function App() {
             alert("No elements selected");
             return;
         }
-        const response = await fetch('http://localhost:8080/api/invoice/pdf?id=' + selectedIds.toString()).then((data) => {
-            console.log(data);
+        const response = await fetch('http://localhost:8080/api/invoice/pdf?id=' + selectedIds.toString()).then((data) => data.json()).then((data) => {
+            window.open(data.redirectUrl)
         })
     };
 
