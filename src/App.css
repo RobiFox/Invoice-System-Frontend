@@ -38,6 +38,10 @@ td, tr {
     vertical-align: middle;
 }
 
-td {
+td, table {
     border: 1px solid black;
+}
+
+th {
+    border: 2px solid black;
 }

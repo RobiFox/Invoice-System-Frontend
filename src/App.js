@@ -45,9 +45,9 @@ function App() {
             <table>
                 {products ? (
                     <tr>
-                        <td>Name</td>
-                        <td>Amount</td>
-                        <td>Include in Invoice</td>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Include in Invoice</th>
                     </tr>
                 ) : (
                     <p>{loadingStatus}</p>
