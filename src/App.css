@@ -32,3 +32,12 @@
     transform: rotate(360deg);
   }
 }
+
+td, tr {
+    text-align: center;
+    vertical-align: middle;
+}
+
+td {
+    border: 1px solid black;
+}

@@ -54,9 +54,9 @@ function App() {
                 )}
                 {products && products.map((product) => (
                     <tr key={"row-" + product.id}>
-                        <td style={{border: '1px solid black'}}>{product.name}</td>
-                        <td style={{border: '1px solid black'}}>{product.amount}</td>
-                        <td style={{border: '1px solid black'}}><input type="checkbox" id={"checkbox-" + product.id}/>
+                        <td>{product.name}</td>
+                        <td>{product.amount}</td>
+                        <td><input type="checkbox" id={"checkbox-" + product.id}/>
                         </td>
                     </tr>
                 ))}
