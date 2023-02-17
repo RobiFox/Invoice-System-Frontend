@@ -13,6 +13,10 @@ function App() {
                 return value.id;
             });
         console.log(selectedIds.toString());
+        if(selectedIds.length == 0) {
+            alert("No elements selected");
+            return;
+        }
         const response = await fetch('http://localhost:8080/api/invoice/pdf?id=' + selectedIds.toString()).then((data) => {
             console.log(data);
         })
@@ -60,7 +64,7 @@ function App() {
             </table>
             {products ? (
                 <button onClick={onInvoiceGenerateClick}>Generate Invoice from Selected</button>
-            ) : (<div/>)}
+            ) : null}
         </div>
     );
 }
