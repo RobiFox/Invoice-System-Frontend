@@ -44,31 +44,33 @@ function App() {
         getProducts();
         setLoadingStatus("Loading...");
     }, []);
-    
+
     return (
         <div className="App">
-            <table>
-                {products ? (
+            {products && products.length > 0 ? (
+                <table>
+                    <tbody>
                     <tr>
                         <th>Name</th>
                         <th>Amount</th>
                         <th>Include in Invoice</th>
                     </tr>
-                ) : (
-                    <p>{loadingStatus}</p>
-                )}
-                {products && products.map((product) => (
-                    <tr key={"row-" + product.id}>
-                        <td>{product.name}</td>
-                        <td>{product.amount}</td>
-                        <td><input type="checkbox" id={"checkbox-" + product.id}/>
-                        </td>
+                    </tbody>
+                    {products.map((product) => (
+                        <tr key={"row-" + product.id}>
+                            <td>{product.name}</td>
+                            <td>{product.amount}</td>
+                            <td><input type="checkbox" id={"checkbox-" + product.id}/>
+                            </td>
+                        </tr>
+                    ))}
+                    <tr>
+                        <td colSpan={3}><button onClick={onInvoiceGenerateClick}>Generate Invoice from Selected</button></td>
                     </tr>
-                ))}
-            </table>
-            {products ? (
-                <button onClick={onInvoiceGenerateClick}>Generate Invoice from Selected</button>
-            ) : null}
+                </table>
+            ) : (
+                <p>{loadingStatus}</p>
+            )}
         </div>
     );
 }
